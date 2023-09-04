@@ -12,7 +12,17 @@ import io
 
 buffer = io.BytesIO()
 
-nltk.download('wordnet')
+
+
+@st.cache_data(show_spinner=False)
+def carregar_modulos_nltk():
+    # Baixa os módulos 'stopwords' e 'punkt' do NLTK
+    nltk.download('stopwords')
+    nltk.download('punkt')
+    nltk.download('wordnet')
+
+    # Retorna True para indicar que os módulos foram baixados e armazenados em cache
+    return True
 
 # Função para pré-processamento de texto
 def preprocess_text(text):
@@ -39,12 +49,13 @@ def preprocess_text(text):
 
 
 def createPage():
+    carregar_modulos_nltk()
     
     if 'language' not in st.session_state:
         st.session_state.language = 'English'
         
     if 'api' not in st.session_state:
-        st.session_state.api = None
+        st.session_state.api = 'api-key'
         
     if 'button_proceed' not in st.session_state:
         st.session_state.button_proceed = False
@@ -53,6 +64,7 @@ def createPage():
         st.session_state.df_resultado = None
         
     if 'meta' not in st.session_state:
+        generated_text = None
         st.session_state.meta = None
         
            
