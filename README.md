@@ -16,10 +16,6 @@ Benefits:
 * By using the API, you can achieve approximately a 30% reduction in token usage, which translates to cost savings.
 * You can efficiently create meta tags in bulk by uploading a .xlsx file. Each row in your file will generate a unique prompt based on the provided information, resulting in personalized * prompts for each URL.
 
-### Work in Progress
-
-This application is fully functional but still a work in progress.. I would appreciate any feedback on this application.
-
 ## ☕ How to Use it
 
 * Simply go to the [web application](https://seo-meta-tag-bulk-creator.streamlit.app/).
@@ -27,6 +23,10 @@ This application is fully functional but still a work in progress.. I would appr
 * Choose your language;
 * Insert any descriptions you have on your page or include them all in your .xlsx file.
 * Bulk Create Meta Tags ✨.
+
+### Work in Progress
+
+This application is fully functional but still a work in progress.. I would appreciate any feedback on this application.
 
 ### If you want to get in touch or be the first to know about my development ideas: ⤵️
 
