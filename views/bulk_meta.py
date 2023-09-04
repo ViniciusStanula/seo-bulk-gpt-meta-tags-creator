@@ -12,8 +12,6 @@ import io
 
 buffer = io.BytesIO()
 
-
-
 @st.cache_data(show_spinner=False)
 def carregar_modulos_nltk():
     # Baixa os módulos 'stopwords' e 'punkt' do NLTK
@@ -64,7 +62,6 @@ def createPage():
         st.session_state.df_resultado = None
         
     if 'meta' not in st.session_state:
-        generated_text = None
         st.session_state.meta = None
         
            
@@ -181,9 +178,9 @@ def createPage():
                     # Obtenha a resposta gerada pelo chatGPT
                     generated_text = response['choices'][0]['message']['content']
                     
-                st.session_state.meta = generated_text
-                    
-                if st.session_state.api and persona and button:
+                    st.session_state.meta = generated_text
+                   
+                if hasattr(st.session_state, 'meta') and st.session_state.meta is not None:
                     index = 2
                     if st.session_state.language == 'English':         
                         st.write('Here is your result:')
@@ -392,12 +389,12 @@ def createPage():
                                 ]
                             )
 
-                        # Obtenha a resposta gerada pelo chatGPT
-                        generated_text = response['choices'][0]['message']['content']
+                            # Obtenha a resposta gerada pelo chatGPT
+                            generated_text = response['choices'][0]['message']['content']
 
-                        # Crie um DataFrame temporário para cada linha
-                        df_temp = pd.DataFrame({'URL': [url], 'Nome': [nome], 'Resposta GPT-4': [generated_text]})
-                        df_temp_list.append(df_temp)
+                            # Crie um DataFrame temporário para cada linha
+                            df_temp = pd.DataFrame({'URL': [url], 'Nome': [nome], 'Resposta GPT-4': [generated_text]})
+                            df_temp_list.append(df_temp)
 
                     # Concatene os DataFrames temporários para criar o DataFrame final
                     df_final = pd.concat(df_temp_list, ignore_index=True)
