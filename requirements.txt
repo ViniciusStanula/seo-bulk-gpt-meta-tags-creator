@@ -1,0 +1,7 @@
+streamlit==1.26.0
+pandas
+pyexcelerate
+openai
+nltk
+streamlit_antd_components
+pillow
