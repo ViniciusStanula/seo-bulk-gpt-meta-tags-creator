@@ -5,3 +5,4 @@ openai
 nltk
 streamlit_antd_components
 pillow
+streamlit_extras
